@@ -1,0 +1,126 @@
+# =========================
+
+# Build outputs
+
+# =========================
+
+bin/
+obj/
+out/
+
+# =========================
+
+# User-specific files
+
+# =========================
+
+*.user
+*.userosscache
+*.suo
+*.userprefs
+
+# =========================
+
+# IDE / Editor folders
+
+# =========================
+
+.vs/
+.vscode/
+.idea/
+
+# =========================
+
+# Logs
+
+# =========================
+
+*.log
+
+# =========================
+
+# OS files
+
+# =========================
+
+.DS_Store
+Thumbs.db
+
+# =========================
+
+# NuGet
+
+# =========================
+
+*.nupkg
+*.snupkg
+.nuget/
+packages/
+
+# =========================
+
+# Environment / secrets
+
+# =========================
+
+.env
+.env.*
+appsettings.Development.json
+secrets.json
+
+# =========================
+
+# Rider
+
+# =========================
+
+.idea/
+
+# =========================
+
+# VS Code settings (optional — keep if you want shared settings)
+
+# .vscode/settings.json
+
+# =========================
+
+# Test results
+
+# =========================
+
+TestResults/
+*.trx
+
+# =========================
+
+# Coverage
+
+# =========================
+
+coverage/
+*.coverage
+*.coveragexml
+
+# =========================
+
+# Docker
+
+# =========================
+
+docker-compose.override.yml
+
+# =========================
+
+# Publish output
+
+# =========================
+
+publish/
+
+# =========================
+
+# Azure / cloud
+
+# =========================
+
+*.PublishSettings
