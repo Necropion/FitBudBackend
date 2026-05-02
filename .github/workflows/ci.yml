@@ -19,6 +19,3 @@ jobs:
 
       - run: dotnet restore Backend.csproj
       - run: dotnet build Backend.csproj --configuration Release --no-restore
-
-      - name: Force fail
-        run: exit 1
