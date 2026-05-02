@@ -3,8 +3,8 @@ WORKDIR /src
 
 COPY . .
 
-RUN dotnet restore FitBudBackend.csproj
-RUN dotnet publish FitBudBackend.csproj -c Release -o /app/publish
+RUN dotnet restore Backend.csproj
+RUN dotnet publish Backend.csproj -c Release -o /app/publish
 
 FROM mcr.microsoft.com/dotnet/aspnet:8.0
 WORKDIR /app
