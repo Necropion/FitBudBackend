@@ -9,4 +9,7 @@ public class Role
 
     [Required]
     public string Name { get; set; } = default!;
+
+    // Inverse Navigation Prop
+    public List<User> Users { get; set; } = new();
 }

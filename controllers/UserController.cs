@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Backend.models;
 using Backend.services;
+using Backend.models.dtos;
 
 namespace Backend.controllers;
 
@@ -17,7 +18,7 @@ public class UserController : ControllerBase
 
     // Get User List
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<User>>> GetUsers()
+    public async Task<ActionResult<IEnumerable<UserResponseDTO>>> GetUsers()
     {
         var users = await _userService.FetchAllUsers();
 
@@ -26,9 +27,9 @@ public class UserController : ControllerBase
 
     // Post Single User
     [HttpPost]
-    public async Task<ActionResult<User>> PostUser(User user)
+    public async Task<ActionResult<UserResponseDTO>> PostUser(UserCreateDTO userCreateDTO)
     {
-        var newUser = await _userService.CreateUser(user);
+        var newUser = await _userService.CreateUser(userCreateDTO);
 
         if (newUser == null)
         {

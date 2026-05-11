@@ -1,4 +1,5 @@
 using Backend.models;
+using Backend.models.dtos;
 using FitBudBackend.data;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,17 +15,55 @@ public class UserService
     }
 
     // Fetch All Users
-    public async Task<IEnumerable<User>> FetchAllUsers()
+    public async Task<IEnumerable<UserResponseDTO>> FetchAllUsers()
     {
-        return await _databaseContext.Users.ToListAsync();
+        var users = await _databaseContext.Users
+            .Include(u => u.Role)
+            .Select(u => new UserResponseDTO
+            {
+                Id = u.Id,
+                Name = u.Name,
+                Role = u.Role.Name
+            })
+            .ToListAsync();
+        
+        return users;
+    }
+
+    // Find Single User By ID
+    public async Task<UserResponseDTO?> FindUserByID(Guid userID)
+    {
+        var userFound = await _databaseContext.Users
+        .Include(u => u.Role)
+        .FirstOrDefaultAsync(u => u.Id == userID);
+
+        if (userFound == null)
+        {
+            return null;
+        }
+
+        var user = new UserResponseDTO
+        {
+            Id = userFound.Id,
+            Name = userFound.Name,
+            Role = userFound.Role.Name
+        };
+
+        return user;
     }
 
     // Create User
-    public async Task<User> CreateUser(User user)
+    public async Task<UserResponseDTO> CreateUser(UserCreateDTO userCreateDTO)
     {
-        _databaseContext.Users.Add(user);
+        var newUser = new User
+        {
+            Name = userCreateDTO.Name,
+            RoleId = 1
+        };
+
+        _databaseContext.Users.Add(newUser);
         await _databaseContext.SaveChangesAsync();
 
-        return user;
+        return await FindUserByID(newUser.Id);
     }
 }

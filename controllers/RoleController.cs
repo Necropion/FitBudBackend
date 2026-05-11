@@ -1,4 +1,5 @@
 using Backend.models;
+using Backend.models.dtos;
 using Backend.services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,7 +18,7 @@ public class RoleController : ControllerBase
 
     // Get Role List
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<Role>>> GetRoles()
+    public async Task<ActionResult<IEnumerable<RoleResponseDTO>>> GetRoles()
     {
         var roles = await _roleService.FetchAllRoles();
 

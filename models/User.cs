@@ -1,19 +1,25 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace Backend.models
+namespace Backend.models;
+
+public class User
 {
-    public class User
-    {
-        [Key]
-        public Guid Id { get; set; }
+    [Key]
+    public Guid Id { get; set; }
 
-        [Required]
-        public string Name { get; set; } = default!;
+    [Required]
+    public string Name { get; set; } = null!;
 
-        [Required]
-        public int Role_id { get; set; } = default!;
+    // Foreign Key
+    [Required]
+    public int RoleId { get; set; } = default!;
 
-        [Required]
-        public DateTime Created_at { get; set; } = DateTime.UtcNow;
-    }
+    [Required]
+    public DateTime Created_at { get; set; } = DateTime.UtcNow;
+    
+    // Navigation Prop
+    public Role Role { get; set; } = null!;
+
+    // Inverse Navigation Prop
+    
 }

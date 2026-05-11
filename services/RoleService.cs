@@ -1,4 +1,5 @@
 using Backend.models;
+using Backend.models.dtos;
 using FitBudBackend.data;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,9 +15,15 @@ public class RoleService
     }
 
     // Fetch All Roles
-    public async Task<IEnumerable<Role>> FetchAllRoles()
+    public async Task<IEnumerable<RoleResponseDTO>> FetchAllRoles()
     {
-        return await _databaseContext.Roles.ToListAsync();
+        return await _databaseContext.Roles
+        .Select(r => new RoleResponseDTO
+        {
+            Id = r.Id,
+            Name = r.Name
+        })
+        .ToListAsync();
     }
 
     // Create Role
