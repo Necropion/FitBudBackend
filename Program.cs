@@ -12,6 +12,8 @@ builder.Services.AddDbContext<DatabaseContext>(options => options.UseNpgsql(conn
 
 // Dependency Injections
 builder.Services.AddScoped<UserService>();
+builder.Services.AddScoped<RoleService>();
+builder.Services.AddScoped<WeightUnitService>();
 
 try
 {
