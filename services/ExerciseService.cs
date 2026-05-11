@@ -33,7 +33,7 @@ public class ExerciseService
         return exercises;
     }
 
-    // Find Single Exercise By ID
+    // Find Single Exercise By Id
     public async Task<ExerciseResponseDTO?> FindExerciseByID(Guid exerciseId)
     {
         var exerciseFound = await _databaseContext.Exercises
@@ -78,7 +78,7 @@ public class ExerciseService
     }
 
     // Create Exercise
-    public async Task<ExerciseResponseDTO> CreateExercise(ExerciseCreateDTO exerciseCreateDTO)
+    public async Task<ExerciseResponseDTO?> CreateExercise(ExerciseCreateDTO exerciseCreateDTO)
     {
 
         var newExercise = new Exercise
