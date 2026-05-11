@@ -11,5 +11,9 @@ namespace FitBudBackend.data
         }
 
         public DbSet<User> Users { get; set; }
+
+        public DbSet<Role> Roles { get; set; }
+
+        public DbSet<WeightUnit> WeightUnits { get; set; }
     }
 }
