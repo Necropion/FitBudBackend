@@ -22,6 +22,35 @@ namespace Backend.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
+            modelBuilder.Entity("Backend.models.Exercise", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("Created_at")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Notes")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<Guid?>("UserId")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Exercises");
+                });
+
             modelBuilder.Entity("Backend.models.Role", b =>
                 {
                     b.Property<int>("Id")
@@ -79,6 +108,15 @@ namespace Backend.Migrations
                     b.ToTable("WeightUnits");
                 });
 
+            modelBuilder.Entity("Backend.models.Exercise", b =>
+                {
+                    b.HasOne("Backend.models.User", "User")
+                        .WithMany("Exercises")
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("Backend.models.User", b =>
                 {
                     b.HasOne("Backend.models.Role", "Role")
@@ -93,6 +131,11 @@ namespace Backend.Migrations
             modelBuilder.Entity("Backend.models.Role", b =>
                 {
                     b.Navigation("Users");
+                });
+
+            modelBuilder.Entity("Backend.models.User", b =>
+                {
+                    b.Navigation("Exercises");
                 });
 #pragma warning restore 612, 618
         }

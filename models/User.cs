@@ -21,5 +21,5 @@ public class User
     public Role Role { get; set; } = null!;
 
     // Inverse Navigation Prop
-    
+    public List<Exercise> Exercises { get; set; } = new();
 }

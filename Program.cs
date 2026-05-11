@@ -14,6 +14,7 @@ builder.Services.AddDbContext<DatabaseContext>(options => options.UseNpgsql(conn
 builder.Services.AddScoped<UserService>();
 builder.Services.AddScoped<RoleService>();
 builder.Services.AddScoped<WeightUnitService>();
+builder.Services.AddScoped<ExerciseService>();
 
 try
 {
