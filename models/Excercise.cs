@@ -19,4 +19,7 @@ public class Exercise
 
     // Navigation Prop
     public User? User { get; set; }
+
+    // Inverse Navigation Prop
+    public List<WorkoutTemplateExercise> WorkoutTemplateExercises { get; set; }= new();
 }

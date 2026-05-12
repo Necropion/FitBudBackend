@@ -15,5 +15,6 @@ namespace FitBudBackend.data
         public DbSet<WeightUnit> WeightUnits { get; set; }
         public DbSet<WorkoutTemplate> WorkoutTemplates { get; set; }
         public DbSet<Exercise> Exercises { get; set; }
+        public DbSet<WorkoutTemplateExercise> WorkoutTemplateExercises { get; set; }
     }
 }

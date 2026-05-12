@@ -16,6 +16,7 @@ builder.Services.AddScoped<RoleService>();
 builder.Services.AddScoped<WeightUnitService>();
 builder.Services.AddScoped<WorkoutTemplateService>();
 builder.Services.AddScoped<ExerciseService>();
+builder.Services.AddScoped<WorkoutTemplateExerciseService>();
 
 try
 {

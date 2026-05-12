@@ -35,7 +35,7 @@ public class ExerciseController : ControllerBase
     }
 
 
-    // Post Sinlge Exercise
+    // Post Single Exercise
     [HttpPost]
     public async Task<ActionResult<ExerciseResponseDTO>> PostExercise(ExerciseCreateDTO exerciseCreateDTO)
     {
